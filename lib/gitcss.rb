@@ -14,7 +14,7 @@ class GitCSS
   end
 
   def get(selector)
-    obj_by_id(GitCSS::Selector.new(selector).parts.first)
+    obj_by_id(GitCSS::Selector.parse(selector).first)
   end
 
   def obj_by_id(selector)

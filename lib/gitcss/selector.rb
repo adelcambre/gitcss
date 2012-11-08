@@ -1,25 +1,19 @@
 class GitCSS::Selector
-  def initialize(selector)
-    @selector = Nokogiri::CSS.parse(selector)
-    @parts = @selector.map{|s| parse(s) }.flatten
+  def self.parse(selector)
+    Nokogiri::CSS.parse(selector).map{|s| parse_part(s) }.flatten
   end
 
-  attr_reader :parts
-
-  def parse(selector)
+  def self.parse_part(selector)
     case selector.type
     when :ELEMENT_NAME
-      [GitCSS::SelectorPart.new_from_element(selector)]
+      [new_from_element(selector)]
     when :DESCENDANT_SELECTOR
-      selector.value.map{|s| parse(s) }
+      selector.value.map{|s| parse_part(s) }
     when :CONDITIONAL_SELECTOR
-      [GitCSS::SelectorPart.new_from_condition(selector)]
+      [new_from_condition(selector)]
     end
   end
-end
 
-
-class GitCSS::SelectorPart
   def initialize(type, attrs)
     @type, @attrs = type, attrs
   end
