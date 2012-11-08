@@ -1,6 +1,16 @@
 # Gitcss
 
-TODO: Write a gem description
+A small gem to browse a git repo using CSS selectors. 
+
+It uses nokogiri to parse out the CSS selector and then 
+rugged to browse the git repo.
+
+Currently only "commit#sha" and "tree#sha" are implemented. 
+
+## Authors
+
+Andy Delcambre <adelcambre@gmail.com>
+Brian Lopez <seniorlopez@gmail.com>
 
 ## Installation
 
