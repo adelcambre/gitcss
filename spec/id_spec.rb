@@ -17,4 +17,12 @@ describe "#sha" do
     tree = gitcss.get("tree#1f2c5dc7dc5a0c2879e48293fe07e9b044986b19")
     tree.oid.should == "1f2c5dc7dc5a0c2879e48293fe07e9b044986b19"
   end
+
+  it "gets a blob object" do
+    blob = gitcss.get("blob#345e6aef713208c8d50cdea23b85e6ad831f0449")
+    blob.oid.should == "345e6aef713208c8d50cdea23b85e6ad831f0449"
+    blob.content.should == "Test\n"
+  end
+
+  it "gets nested objects"
 end
