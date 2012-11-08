@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "gitcss"
   gem.require_paths = ["lib"]
-  gem.version       = Gitcss::VERSION
+  gem.version       = GitCSS::VERSION
 
   gem.add_dependency "rugged"
   gem.add_dependency "nokogiri"

@@ -1,6 +1,12 @@
 require "gitcss/version"
+require "gitcss/selector"
 require "rugged"
 require "nokogiri"
+
+TYPES = {
+  "commit" => Rugged::Commit,
+  "tree" => Rugged::Tree
+}
 
 class GitCSS
   def initialize(path)
@@ -8,11 +14,16 @@ class GitCSS
   end
 
   def get(selector)
-    commit_for_id(Nokogiri::CSS.parse(selector).first.value.last.value.first[1..-1])
+    obj_by_id(GitCSS::Selector.new(selector).parts.first)
   end
 
-  def commit_for_id(oid)
-    @rugged_repo.lookup(oid)
+  def obj_by_id(selector)
+    obj = @rugged_repo.lookup(selector.id)
+    if obj.is_a?(TYPES[selector.type])
+      obj
+    else
+      nil
+    end
   end
 
 end
