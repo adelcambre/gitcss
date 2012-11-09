@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = GitCSS::VERSION
 
-  gem.add_dependency "rugged"
+  gem.add_dependency "rugged", "0.17.0.b7"
   gem.add_dependency "nokogiri"
 end

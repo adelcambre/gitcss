@@ -23,6 +23,4 @@ describe "#sha" do
     blob.oid.should == "345e6aef713208c8d50cdea23b85e6ad831f0449"
     blob.content.should == "Test\n"
   end
-
-  it "gets nested objects"
 end
